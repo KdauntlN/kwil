@@ -1,3 +1,6 @@
+use crate::logging::formatter::Formatter;
+
+#[derive(Debug, Clone)]
 pub enum Level {
     Fatal,
     Error,
@@ -7,9 +10,10 @@ pub enum Level {
     Trace
 }
 
+#[derive(Debug, Clone)]
 pub struct Log<'a> {
-    level: Level,
-    msg: &'a str
+    pub level: Level,
+    pub msg: &'a str
 }
 
 impl<'a> Log<'a> {
@@ -18,5 +22,9 @@ impl<'a> Log<'a> {
             level: level,
             msg: msg
         }
+    }
+
+    pub fn format<F: Formatter + ?Sized>(self, formatter: &Box<F>) -> String {
+        formatter.format(self)
     }
 }

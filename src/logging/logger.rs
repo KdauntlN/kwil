@@ -1,5 +1,3 @@
-use std::error::Error;
-
 use crate::logging::{
     sink::Sink,
     builder::LoggerBuilder,
@@ -21,13 +19,11 @@ impl Logger {
         }
     }
 
-    pub fn info(&self, msg: &str) -> Result<(), Box<dyn Error>> {
-        let log = Log::new(Level::Info, msg);
+    pub fn info(&mut self, msg: &str) {
+        let log: Log<'_> = Log::new(Level::Info, msg);
 
-        for sink in &self.sinks {
-            
-        }
-    
-        Ok(())
+        for sink in self.sinks.iter_mut() {
+            sink.handle(log.clone());
+        };
     }
 }

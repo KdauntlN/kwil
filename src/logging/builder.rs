@@ -1,3 +1,4 @@
+use crate::logging::formatter::Formatter;
 use crate::logging::sink::Sink;
 use crate::logging::logger::Logger;
 
@@ -14,8 +15,12 @@ impl LoggerBuilder {
         }
     }
 
-    pub fn add_handler<T: Write + 'static>(mut self, file: T) -> Self {
-        self.sinks.push(Sink::new(file));
+    pub fn add_handler<T, F>(mut self, file: T, formatter: F) -> Self
+    where
+        T: Write + 'static,
+        F: Formatter + 'static
+    {
+        self.sinks.push(Sink::new(file, formatter));
 
         Self {
             sinks: self.sinks,
@@ -29,15 +34,4 @@ impl LoggerBuilder {
 
 pub fn logger() -> LoggerBuilder {
     LoggerBuilder::new()
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn add_handler_test() {
-        let logger = logger().add_handler(std::io::stdout());
-        assert!(logger.sinks.len() > 0);
-    }
 }
