@@ -1,24 +1,29 @@
 use crate::logging::sink::Sink;
+use crate::logging::logger::Logger;
 
 use std::io::Write;
 
 pub struct LoggerBuilder {
-    handlers: Vec<Sink>
+    pub sinks: Vec<Sink>
 }
 
 impl LoggerBuilder {
     fn new() -> Self {
         Self {
-            handlers: Vec::new(),
+            sinks: Vec::new(),
         }
     }
 
     pub fn add_handler<T: Write + 'static>(mut self, file: T) -> Self {
-        self.handlers.push(Sink::new(file));
+        self.sinks.push(Sink::new(file));
 
         Self {
-            handlers: self.handlers,
+            sinks: self.sinks,
         }
+    }
+
+    pub fn build(self) -> Logger {
+        Logger::new(self)
     }
 }
 
@@ -33,6 +38,6 @@ mod tests {
     #[test]
     fn add_handler_test() {
         let logger = logger().add_handler(std::io::stdout());
-        assert!(logger.handlers.len() > 0);
+        assert!(logger.sinks.len() > 0);
     }
 }
