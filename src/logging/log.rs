@@ -1,4 +1,4 @@
-use crate::logging::formatter::Formatter;
+use crate::formatting::formatter::Formatter;
 
 #[derive(Debug, Clone)]
 pub enum Level {

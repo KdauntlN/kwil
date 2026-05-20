@@ -1,6 +1,7 @@
-use crate::logging::formatter::Formatter;
 use crate::logging::sink::Sink;
 use crate::logging::logger::Logger;
+
+use crate::formatting::formatter::Formatter;
 
 use std::io::Write;
 
