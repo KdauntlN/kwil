@@ -37,6 +37,6 @@ impl Formatter for TextFormatter {
     }
 }
 
-pub fn text() -> TextFormatter {
+pub fn plain_text() -> TextFormatter {
     TextFormatter::new()
 }

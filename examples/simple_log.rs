@@ -4,8 +4,8 @@ fn main() {
     // Create a Logger and assign a sink to stdout
     let mut logger = kwil::logger()
         .add_handler(
-            std::io::stdout(), 
-            kwil::text()
+            std::io::stdout(),
+            kwil::plain_text()
         )
         .build();
 
