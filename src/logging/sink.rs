@@ -1,7 +1,7 @@
 use std::io::Write;
 
 use crate::logging::log::Log;
-use crate::logging::formatter::Formatter;
+use crate::formatting::formatter::Formatter;
 
 pub struct Sink {
     output: Box<dyn Write + 'static>,

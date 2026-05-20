@@ -1,4 +1,5 @@
 mod logging;
+mod formatting;
 
 pub use logging::builder::logger;
-pub use logging::formatter::text;
+pub use formatting::text::text;
