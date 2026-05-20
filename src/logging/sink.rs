@@ -23,9 +23,3 @@ impl Sink {
         }
     }
 }
-
-impl std::fmt::Debug for Sink {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Sink object")
-    }
-}
