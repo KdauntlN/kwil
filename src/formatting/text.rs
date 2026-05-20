@@ -6,9 +6,7 @@ use crate::{
     }
 };
 
-pub struct TextFormatter {
-    
-}
+pub struct TextFormatter;
 
 impl TextFormatter {
     fn new() -> Self {
@@ -24,8 +22,12 @@ impl Formatter for TextFormatter {
 
         use Level as L;
         message.push_str(match log.level {
+            L::Trace => "[TRACE]: ",
+            L::Debug => "[DEBUG]: ",
             L::Info => "[INFO]: ",
-            _ => todo!()
+            L::Warning => "[WARNING]: ",
+            L::Error => "[ERROR]: ",
+            L::Fatal => "[FATAL]: "
         });
 
         message.push_str(log.msg);
