@@ -5,7 +5,7 @@ fn main() {
     let mut logger = kwil::logger()
         .add_handler(
             std::io::stdout(),
-            kwil::plain_text()
+            kwil::coloured_text()
         )
         .build();
 
