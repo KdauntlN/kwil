@@ -24,7 +24,7 @@ fn main() {
     let mut logger = kwil::logger()
         .add_handler(
             std::io::stdout(),
-            kwil::text()
+            kwil::coloured_text()
         )
         .build();
 }
