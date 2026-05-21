@@ -44,3 +44,13 @@ logger.error("This is an error message");
 
 logger.fatal("This is a fatal error message");
 ```
+
+This shows the output
+```bash
+\x1b36m[[TRACE]\x1b0m[   This is a trace message
+\x1b35m[[DEBUG]\x1b0m[   This is a debug message
+\x1b32m[[INFO]\x1b0m[    This is an info message
+\x1b33m[[WARNING]\x1b0m[ This is a warning message
+\x1b31m[[ERROR]\x1b0m[   This is an error message
+\x1b91m[[FATAL]\x1b0m[   This is a fatal error message
+```
