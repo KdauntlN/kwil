@@ -1,10 +1,5 @@
-use crate::{
-    formatting::formatter::Formatter,
-    logging::log::{
-        Log,
-        Level,
-    }
-};
+use crate::formatting::formatter::Formatter;
+use crate::logging::log::{Log, Level};
 
 pub struct ColourTextFormatter;
 
