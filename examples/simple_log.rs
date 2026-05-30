@@ -2,12 +2,9 @@ use kwil;
 
 fn main() {
     // Create a Logger and assign a sink to stdout
-    let mut logger = kwil::logger()
-        .add_handler(
-            std::io::stdout(),
-            kwil::coloured_text()
-        )
-        .build();
+    let mut logger = kwil::logger(|builder| {
+        
+    });
 
     // Log messages of various severities
     logger.trace("This is a trace message");

@@ -1,4 +1,3 @@
-use crate::logging::sink::Sink;
 use crate::logging::logger::Logger;
 
 use crate::formatting::formatter::Formatter;
@@ -33,6 +32,13 @@ impl LoggerBuilder {
     }
 }
 
-pub fn logger() -> LoggerBuilder {
-    LoggerBuilder::new()
+pub fn logger<F>(func: F) -> Logger
+where
+    F: FnOnce(&mut LoggerBuilder) -> ()
+{
+    let mut logger_builder = LoggerBuilder::new();
+
+    func(&mut logger_builder);
+
+    logger_builder.build()
 }

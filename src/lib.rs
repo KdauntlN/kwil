@@ -1,5 +1,6 @@
 mod logging;
 mod formatting;
+mod output;
 
 pub use logging::builder::logger;
 pub use formatting::text_formatter::plain_text;

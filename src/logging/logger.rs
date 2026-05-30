@@ -1,4 +1,3 @@
-use crate::logging::sink::Sink;
 use crate::logging::builder::LoggerBuilder;
 use crate::logging::log::{Log, Level};
 
